@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const { GitHub } = require('@actions/github');
+const signale = require('signale');
 
 const pullRequests = require('./lib/pull-requests');
 const leaveComment = require('./lib/comment');
@@ -16,7 +17,7 @@ async function run() {
     const octokit = new GitHub(ghToken, {});
 
     const conflictInfo = await pullRequests({ octokit });
-    core.debug(conflictInfo);
+    signale.debug(conflictInfo);
 
     if (conflictInfo.conflictPrs.length > 0) {
       // leave comment on current PR
@@ -46,6 +47,7 @@ async function run() {
     }
   }
   catch (error) {
+    signale.fatal(error);
     core.setFailed(error.message);
   }
 }
