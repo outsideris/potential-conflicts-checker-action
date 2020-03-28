@@ -15,6 +15,8 @@ async function run() {
     signale.debug('----------');
     signale.debug(context.pull_request);
     signale.debug('----------');
+    signale.debug(context.payload.pull_request);
+    signale.debug('----------');
     // This should be a token with access to your repository scoped in as a secret.
     // The YML workflow will need to set myToken with the GitHub Secret Token
     // myToken: ${{ secrets.GITHUB_TOKEN }}
