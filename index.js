@@ -1,3 +1,4 @@
+const { inspect } = require('util');
 const core = require('@actions/core');
 const { GitHub, context } = require('@actions/github');
 const signale = require('signale');
@@ -21,7 +22,7 @@ async function run() {
     const octokit = new GitHub(ghToken, {});
 
     const conflictInfo = await pullRequests({ octokit });
-    signale.debug(conflictInfo);
+    signale.debug(inspect(conflictInfo, {depth:3}));
 
     if (conflictInfo.conflictPrs.length > 0) {
       // leave comment on current PR
