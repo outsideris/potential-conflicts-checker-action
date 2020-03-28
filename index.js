@@ -22,9 +22,9 @@ async function run() {
     if (conflictInfo.conflictPrs.length > 0) {
       // leave comment on current PR
       const body = commentTpl +
-        conflictInfo.conflictPrs.map(c =>
-          `PR: #${c.number}\n${c.conflicts.map(f => `\`${f}\``)}`
-        );
+        conflictInfo.conflictPrs.map(c => {
+          `#${c.number}\nconflictable files: ${c.conflicts.map(f => `\`${f}\``).join(',')}`
+        }).join('\n');
       await leaveComment({
         octokit,
         pull_number: conflictInfo.pull_number,
