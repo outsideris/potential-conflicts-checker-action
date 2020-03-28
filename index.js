@@ -1,5 +1,5 @@
 const core = require('@actions/core');
-const { GitHub } = require('@actions/github');
+const { GitHub, context } = require('@actions/github');
 const signale = require('signale');
 
 const pullRequests = require('./lib/pull-requests');
@@ -9,6 +9,12 @@ const commentTpl = `This Pull Request may conflict if the Pull Requests below ar
 
 async function run() {
   try {
+    signale.debug(context);
+    signale.debug('----------');
+    signale.debug(context.repo);
+    signale.debug('----------');
+    signale.debug(context.pull_request);
+    signale.debug('----------');
     // This should be a token with access to your repository scoped in as a secret.
     // The YML workflow will need to set myToken with the GitHub Secret Token
     // myToken: ${{ secrets.GITHUB_TOKEN }}
