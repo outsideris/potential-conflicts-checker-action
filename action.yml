@@ -1,7 +1,7 @@
 name: Potential Conflicts Checker
 description: Check if this Pull Request can be conflict after other Pull Requests merged
 inputs:
-  github-token:
+  ghToken:
     description: The GitHub token used to create an authenticated client.
 runs:
   using: docker
