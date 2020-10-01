@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/outsideris/potential-conflicts-checker-action#readme",
   "dependencies": {
-    "@actions/core": "^1.2.3",
+    "@actions/core": "^1.2.6",
     "@actions/github": "^2.1.1",
     "signale": "^1.4.0"
   },
